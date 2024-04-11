@@ -13,7 +13,10 @@ int main() {
     printf("%p \n", &p); // this will give the address of the pointer p
 
     // & operator is called the address of operator
-
-    printf("%d\n", a[2]);// this should print 4
-    printf(("%p\n", *(a+2)));// this should also print 4
+    
+    printf("%d\n", *(p + 2));// this should print 3
+    
 }
+/* a[i] = * (a + i)
+        =*(q + i)
+        =*(i+a) = i[a]*/
