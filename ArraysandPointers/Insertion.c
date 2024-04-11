@@ -28,7 +28,7 @@ int main() {
     printf("Enter the position ");
     scanf("%d", &pos);
 
-    for (i = size - 1; i >= pos - 1; i-- ) {
+    for (i = size - 1; i >= pos - 1; i-- ) { 
         b[i + 1] = b[i];
         
     }
