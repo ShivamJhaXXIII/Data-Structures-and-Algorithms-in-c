@@ -1,0 +1,17 @@
+Stack is a linear data structure
+
+it follows lifo/filo system
+
+LIFO stands for last in first out
+
+filo stands ofr first in last out
+
+which means that the operation on satck is only possible on the topmost element
+
+insertion operation in stack is called push
+
+deletion operation in stackis called pop
+
+peek() operation tells you what the topmost element is
+
+you can make stack using array or linked list
