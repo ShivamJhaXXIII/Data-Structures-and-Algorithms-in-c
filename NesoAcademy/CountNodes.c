@@ -6,6 +6,18 @@ struct node {
     struct node *link;
 };
 
+void print_data(struct node *head) {
+    if(head == NULL) 
+    printf("Linked List is empty");
+    
+    struct node *ptr = head;
+    
+    while(ptr != NULL) {
+        printf("%d ", ptr -> data);
+        ptr = ptr -> link;
+    }
+}
+
 void count_of_nodes(struct node *head) {
     int count = 0;
     if(head == NULL)
@@ -36,7 +48,7 @@ int main() {
 
      head -> link -> link = current;
 
-     printf("%d %d %d", head->data, head->link->data, head->link->link->data);
+     print_data(head);
 
      count_of_nodes(head);
 }
