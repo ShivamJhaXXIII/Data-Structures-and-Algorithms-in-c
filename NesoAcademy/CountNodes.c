@@ -16,6 +16,7 @@ void print_data(struct node *head) {
         printf("%d ", ptr -> data);
         ptr = ptr -> link;
     }
+    printf("\n");
 }
 
 void count_of_nodes(struct node *head) {
@@ -28,7 +29,22 @@ void count_of_nodes(struct node *head) {
         count++;
         ptr = ptr -> link;
     }
-    printf("\nNumber of nodes in the linked list is: %d", count);
+    printf("Number of nodes in the linked list is: %d", count);
+}
+
+void add_at_end(struct node *head, int data) {
+    struct node *ptr, *temp;
+    ptr = head;
+    temp = (struct node *)malloc(sizeof(struct node));
+
+    temp -> data = data;
+    temp -> link = NULL;
+    
+    while(ptr -> link != NULL) {
+        ptr = ptr -> link;
+    }
+    ptr -> link = temp;
+
 }
 
 int main() {
@@ -48,6 +64,9 @@ int main() {
 
      head -> link -> link = current;
 
+     print_data(head);
+
+     add_at_end(head, 67);
      print_data(head);
 
      count_of_nodes(head);
