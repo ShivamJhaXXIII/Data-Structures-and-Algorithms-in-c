@@ -11,10 +11,18 @@ int main() {
     head = (struct node *)malloc(sizeof(struct node));
     head->data = 45;
     head->link = NULL;
+
     struct node *current = malloc(sizeof(struct node));
     current->data = 98;
     current->link = NULL;
     head->link = current;
-    printf("%d", head->data);
+
+    current = malloc(sizeof(struct node));
+    current -> data = 3;
+    current -> link = NULL;
+
+    head->link->link = current;
+
+    printf("%d %d %d", head->data, head->link->data, head->link->link->data);
     return 0;
 }
