@@ -3,7 +3,7 @@
 
 struct node {
     int data;
-    struct node *link
+    struct node *link;
 };
 
 struct node* add_at_end(struct node *ptr, int data) {
@@ -19,14 +19,14 @@ struct node* add_at_end(struct node *ptr, int data) {
 
 }
 
-void add_at_pos(struct ode *head, int data, int pos) {// NOT WORKING
+void add_at_pos(struct node *head, int data, int pos) {// NOT WORKING
     struct node *ptr = head;
     struct node *ptr2 = malloc(sizeof(struct node));
     ptr2 -> data = data;
-    ptr2 -> data = NULL;
+    ptr2 -> link = NULL;
 
-    pos--;
-    while (pos != 1) {
+    
+    while (pos > 1) {
         ptr = ptr -> link;
         pos--;
     }
