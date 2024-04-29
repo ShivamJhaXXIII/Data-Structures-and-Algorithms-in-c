@@ -26,12 +26,18 @@ void add_at_pos(struct node *head, int data, int pos) {// NOT WORKING
     ptr2 -> link = NULL;
 
     
-    while (pos > 1) {
+    while (pos > 1 && ptr != NULL) {
         ptr = ptr -> link;
         pos--;
     }
+    if (pos == 2) {
     ptr2 -> link = ptr -> link;
     ptr -> link = ptr2;
+    } else {
+        printf("Invalid position \n");
+        free(ptr2);
+    }
+    
 }
 
 int main() {
