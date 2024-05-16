@@ -56,6 +56,35 @@ struct Node *del_last(struct Node *head)
     return head;
 }
 
+void del_any_pos(struct Node **head, int pos) 
+{
+    struct Node *previous = head;
+    struct Node *current = head;
+    if(*head == NULL) {
+        printf("List is Empty");
+    } 
+    else if( pos == 1 )
+    {
+        *head = current -> link;
+        free(current);
+        current = NULL;
+    }
+    else 
+    {
+        while(pos != 1)
+        {
+            previous = current;
+            current = current -> link;
+            pos--;
+        }
+        previous -> link = current -> link;
+        free(current);
+        current = NULL;
+    } 
+    return 0;
+    
+}
+
 int main() {
     struct Node* elem1 = malloc(sizeof(struct Node)); // Allocate for Node
     struct Node* elem2 = malloc(sizeof(struct Node));
