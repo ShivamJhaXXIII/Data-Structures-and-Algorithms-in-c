@@ -82,8 +82,19 @@ void del_any_pos(struct Node **head, int pos)
         current = NULL;
     } 
     return 0;
-    
 }
+
+struct Node *del_list(struct Node *head)
+{
+    struct Node *temp = head;
+    while(temp != NULL) {
+        temp = temp -> link;
+        free(head);
+        head = temp;
+    }
+    return head;
+}
+
 
 int main() {
     struct Node* elem1 = malloc(sizeof(struct Node)); // Allocate for Node
@@ -92,7 +103,7 @@ int main() {
 
     elem1->data = 45;
     elem2->data = 98;
-    elem3->data = 3;
+    elem3->data = 3; 
 
     elem1->link = elem2;
     elem2->link = elem3;
