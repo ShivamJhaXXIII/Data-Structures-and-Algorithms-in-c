@@ -35,10 +35,29 @@ Node *addAtBeg(Node *head, int data) {
     head = temp;
     return head;
 }
+
+void addAtEnd(Node *head, int data) {
+    Node *temp = malloc(sizeof(Node));
+    temp -> prev = NULL;
+    temp -> data = data;
+    temp -> next = NULL;
+    Node *ptr = head;
+
+    while(ptr -> next != NULL) {
+        ptr = ptr -> next;
+    }
+    temp -> prev = ptr;
+    ptr -> next = temp;
+    temp -> next = NULL;
+}
 int main () {
     Node *head = NULL;
     head = addToEmpty(head, 45);
     head = addAtBeg(head, 34);
     print_list(head);
+    printf("\n");
+    addAtEnd(head, 75);
+    print_list(head);
+    printf("\n");
     return 0;
 }
