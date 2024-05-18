@@ -50,13 +50,41 @@ void addAtEnd(Node *head, int data) {
     ptr -> next = temp;
     temp -> next = NULL;
 }
+
+void addAtAnyPos(Node *head, int data, int pos) {
+    Node *temp = malloc(sizeof(Node));
+    temp -> prev = NULL;
+    temp -> data = data;
+    temp -> next = NULL;
+    // Creation of the node done
+    Node *ptr = head;
+    while(pos != 1) {
+        ptr = ptr -> next;
+        pos--;
+    }
+    Node *temp2 = ptr -> next;
+    ptr -> next = temp;
+    temp2 -> prev = temp;
+    temp -> next = temp2;
+}
+
 int main () {
     Node *head = NULL;
+
     head = addToEmpty(head, 45);
+
     head = addAtBeg(head, 34);
+
     print_list(head);
     printf("\n");
+
     addAtEnd(head, 75);
+
+    print_list(head);
+    printf("\n");
+
+    addAtAnyPos(head, 9, 2);
+
     print_list(head);
     printf("\n");
     return 0;
