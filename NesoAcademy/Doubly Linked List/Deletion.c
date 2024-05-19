@@ -75,6 +75,22 @@ Node *delLast(Node *head) {
     
     return head;
 }
+
+Node *delAnyPos(Node *head, int pos) {
+    Node *temp = head;
+    Node *temp2, *temp3;
+    while(pos > 1) {
+        temp = temp -> next;
+        pos--;
+    }
+    temp2 = temp -> prev;
+    temp3 = temp -> next;
+    temp2 -> next = temp3;
+    temp3 -> prev = temp2;
+    free(temp);
+    temp = NULL;
+    return head;
+}
 int main() {
     Node *head = NULL;
     head = addToEmpty(head, 34);
@@ -84,8 +100,9 @@ int main() {
     printf("Before Deletion: \n");
     print_list(head);
 
-    head = delFirst(head);
-    head = delLast(head);
+    // head = delFirst(head);
+    // head = delLast(head);
+    head = delAnyPos(head, 2);
     printf("After Deletion: \n");
     print_list(head);
     return 0;
