@@ -13,6 +13,7 @@ void print_list(Node *head) {
         printf("%d ", ptr -> data);
         ptr = ptr -> next;
     }
+    printf("\n");
 }
 
 Node *addToEmpty(Node *head, int data) {
@@ -51,21 +52,30 @@ void addAtEnd(Node *head, int data) {
     temp -> next = NULL;
 }
 
-void addAtAnyPos(Node *head, int data, int pos) {
-    Node *temp = malloc(sizeof(Node));
-    temp -> prev = NULL;
-    temp -> data = data;
-    temp -> next = NULL;
-    // Creation of the node done
-    Node *ptr = head;
-    while(pos != 1) {
-        ptr = ptr -> next;
+Node *addAtAnyPos(Node *head, int data, int pos) {
+    Node *newP = NULL;
+    Node *temp = NULL;
+    Node *temp2 = NULL;
+    newP = addToEmpty(newP, data);
+
+    while (pos != 1) {
+        temp = temp -> next;
         pos--;
     }
-    Node *temp2 = ptr -> next;
-    ptr -> next = temp;
-    temp2 -> prev = temp;
-    temp -> next = temp2;
+
+    if(temp -> next == NULL){
+        temp -> next = newP;
+        newP -> prev = temp;
+    }
+    else {
+        temp2 = temp -> next;
+        temp -> next = newP;
+        temp2 -> prev = newP;
+        newP -> next = temp2;
+        newP -> prev = temp;
+    }
+    return head;
+
 }
 
 int main () {
@@ -83,9 +93,10 @@ int main () {
     print_list(head);
     printf("\n");
 
-    addAtAnyPos(head, 9, 2);
+    head = addAtAnyPos(head, 9, 2);
 
     print_list(head);
     printf("\n");
+
     return 0;
 }
