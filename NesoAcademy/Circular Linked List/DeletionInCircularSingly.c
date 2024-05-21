@@ -53,6 +53,7 @@ node *createCircularSinglyList(node *tail) {
 void print(node *tail) 
 {
     node *ptr = tail -> next;
+    printf("Elements of the node are: ");
     do
     {
         printf("%d ", ptr -> data);
@@ -63,6 +64,15 @@ void print(node *tail)
 
 node *delFirst(node *tail)
 {
+    if(tail == NULL) 
+    {
+        return tail;
+    }
+    if(tail -> next == NULL) {
+        free(tail);
+        tail = NULL;
+        return tail;
+    }
     node *temp = tail -> next;
     tail -> next = temp -> next;
     free(temp);
