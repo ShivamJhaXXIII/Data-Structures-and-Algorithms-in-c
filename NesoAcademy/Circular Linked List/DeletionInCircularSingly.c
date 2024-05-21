@@ -80,13 +80,38 @@ node *delFirst(node *tail)
     return tail;
 }
 
+node *delLast(node *tail)
+{
+    if(tail == NULL)
+    {
+        return tail;
+    }
+    node *ptr = tail -> next;
+    if(tail -> next == tail)
+    {
+        free(tail);
+        tail = NULL;
+        return tail;
+    }
+    while(ptr -> next != tail)
+    {
+        ptr = ptr -> next;
+    }
+    ptr -> next = tail -> next;
+    free(tail);
+    tail = ptr;
+    return tail;
+}
+
 int main () 
 {
     node *tail;
     tail = createCircularSinglyList(tail);
+    printf("\nList before deletion: ");
     print(tail);
-
-    tail = delFirst(tail);
+    printf("\nList after deletion: ");
+    //tail = delFirst(tail);
+    tail = delLast(tail);
 
     print(tail);
 }
