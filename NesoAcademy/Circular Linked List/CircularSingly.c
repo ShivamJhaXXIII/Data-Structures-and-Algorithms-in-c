@@ -23,6 +23,18 @@ node *addAtBeg(node *tail, int data)
     return tail;
 }
 
+node *addAtEnd(node *tail, int data)
+{
+    node *newP = malloc(sizeof(node));
+    newP -> data = data;
+    newP -> next = NULL;
+
+    newP -> next = tail -> next;
+    tail -> next = newP;
+    tail = newP;
+    return tail;
+}
+
 void print(node *tail) 
 {
     node *ptr = tail -> next;
@@ -33,11 +45,15 @@ void print(node *tail)
     } while (ptr != tail -> next);
 }
 
+
+
 int main() 
 {
     node *tail;
     tail = addToEmpty(45);
     tail = addAtBeg(tail, 34);
+    tail = addAtEnd(tail, 6);
+    tail = addAtEnd(tail, 56);
     
     print(tail);
     return 0;
