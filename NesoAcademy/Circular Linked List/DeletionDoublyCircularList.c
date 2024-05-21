@@ -122,6 +122,9 @@ node *delAnyPos(node *tail, int pos) {
     temp2 -> next = temp -> next;
     temp -> next -> prev = temp2;
     free(temp);
+    if(temp == tail) {
+        tail = temp2;
+    }
     return tail;
 }
 
