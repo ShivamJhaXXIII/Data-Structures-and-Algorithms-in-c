@@ -108,6 +108,23 @@ node *delLast(node *tail) {
     return tail;
 }
 
+node *delAnyPos(node *tail, int pos) {
+    if(tail == NULL){
+        printf("No nodes to delete");
+        return NULL;
+    }
+    node *temp = tail -> next;
+    while(pos > 1) {
+        temp = temp -> next;
+        pos--;
+    }
+    node *temp2 = temp -> prev;
+    temp2 -> next = temp -> next;
+    temp -> next -> prev = temp2;
+    free(temp);
+    return tail;
+}
+
 int main() 
 {
     node *tail;
@@ -118,7 +135,8 @@ int main()
     print(tail);
 
     //tail = delFirst(tail);
-    tail = delLast(tail);
+    //tail = delLast(tail);
+    tail = delAnyPos(tail, 3);
     print(tail);
     return 0;
 }
