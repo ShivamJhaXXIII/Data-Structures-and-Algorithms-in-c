@@ -6,7 +6,7 @@ int stack[max];
 
 int push(int top, int data) {
     
-    if(top < max - 1) {
+    if(top == max - 1) {
         top++;
         stack[top] = data;
     } else {
