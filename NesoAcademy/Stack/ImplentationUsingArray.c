@@ -41,33 +41,40 @@ void print_stack() {
 }
 
 int main() {
-    
-    //int op = 3, data;
-    int value = 0;
+    int choice, data;
 
-    push(45);
-    push(56);
-    push(78);
+    while(1) {
+        printf("\n");
+        printf("1. Push\n");
+        printf("2. Pop\n");
+        printf("3. Print the elements of stack\n");
+        printf("4. Quit\n");
+        printf("Enter the choice: ");
+        scanf("%d", &choice);
 
-    pop();
-    // while(op != 2) {
-    //     printf("What operation do you want to perform press 1 for push and 0 for pop or press 2 to exit: ");
-    //     scanf("%d", &op);
-    //     if(op == 1) {
-    //         printf("Enter the data you want to push: ");
-    //         scanf("%d", &data);
-            
-    //         top = push(top, data);
-    //     }
-    //     if(op == 0) {
-    //         top = pop(top);
-    //     }
+        switch(choice) {
+            case 1: 
+            printf("Enter the element you want to be pushed: ");
+            scanf("%d", &data);
+            push(data);
+            break;
 
-    // }
+            case 2: 
+            pop();
+            break;
 
+            case 3: 
+            print_stack();
+            break;
 
-    print_stack(top);
-    
+            case 4: 
+            exit(1);
+            break;
+
+            default:
+            printf("Wrong choice");
+        }
+    }  
     return 0;
 
 }
