@@ -9,6 +9,7 @@ void push(int data) {
     
     if(top == max - 1) {
         printf("Stack overflow\n");
+        return;
     } else {
         top++;
         stack[top] = data;
