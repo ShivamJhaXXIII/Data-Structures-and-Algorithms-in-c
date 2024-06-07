@@ -1,3 +1,4 @@
+// Implemnetation transpose of a matrix using array
 #include<stdio.h> 
 
 int main() {
