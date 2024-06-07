@@ -1,3 +1,4 @@
+//Implementaion of stack using array
 #include<stdio.h>
 
 int stack[10];
