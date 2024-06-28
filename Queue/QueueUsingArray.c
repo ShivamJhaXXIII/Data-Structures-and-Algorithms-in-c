@@ -1,41 +1,74 @@
-#include<stdio.h>
-#define max 10
+#include <stdio.h>
 
-int queue[max];
+#define MAX_SIZE 100 // Define the maximum size of the queue
 
-int enque(int data, int rear) {
-    if(rear < max - 1) {
-        queue[++rear] = data;
-        return rear;
+int queue[MAX_SIZE];
+int front = -1, rear = -1;
+
+// Function to check if the queue is empty
+int isEmpty() {
+    return front == -1;
+}
+
+// Function to check if the queue is full
+int isFull() {
+    return rear == MAX_SIZE - 1;
+}
+
+// Function to enqueue (insert) an element
+void enqueue(int data) {
+    if (isFull()) {
+        printf("Queue overflow\n");
+        return;
+    }
+
+    if (isEmpty) {
+        front = 0;
+    }
+    rear++;
+    queue[rear] = data;
+}
+
+// Function to dequeue (remove) an element
+int dequeue() {
+    if (isEmpty()) {
+        printf("Queue underflow\n");
+        return -1; // Indicate error or special value
+    }
+
+    int data = queue[front];
+
+    if (front == rear) {
+        front = rear = -1; // Reset if only one element
     } else {
-        printf("Queue oveflow");
-        return rear;
+        front++;
     }
+
+    return data;
 }
 
-int deque(int front, int rear) {
-    for(int i = front; i <= rear; i++) {
-        queue[i] = queue[i+1];
+// Function to display the queue elements
+void display() {
+    if (isEmpty()) {
+        printf("Queue is empty\n");
+        return;
     }
-    --rear;
-    return rear;
-}
 
-void print(int front, int rear) {
-    for(int i = front; i <= rear; i++) {
+    printf("Queue elements: ");
+    for (int i = front; i <= rear; i++) {
         printf("%d ", queue[i]);
     }
     printf("\n");
 }
+
 int main() {
-    int front = 0, rear = -1;
-    rear = enque(45, rear);
-    rear = enque(5, rear);
-    rear = enque(55, rear);
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+    display(); // Output: Queue elements: 10 20 30
 
-    print(front, rear);
+    printf("Dequeued element: %d\n", dequeue()); // Output: Dequeued element: 10
+    display(); // Output: Queue elements: 20 30
 
-    rear = deque(front, rear);
-    print(front, rear);
     return 0;
 }
